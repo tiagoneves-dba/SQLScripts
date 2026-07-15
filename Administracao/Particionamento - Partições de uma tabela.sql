@@ -1,15 +1,17 @@
-DECLARE @TableName NVARCHAR(200) = N'posicao' 
+DECLARE @TableName NVARCHAR(200) = N'Recebimento'
 
-SELECT SCHEMA_NAME(o.schema_id) + '.' + OBJECT_NAME(i.object_id) AS [object] 
-     , p.partition_number AS [p#] 
-     , fg.name AS [filegroup] 
-     , p.rows 
-     , au.total_pages AS pages 
-     , CASE boundary_value_on_right 
-       WHEN 1 THEN 'less than' 
-       ELSE 'less than or equal to' END as comparison 
-     , rv.value 
-     , CONVERT (VARCHAR(6), CONVERT (INT, SUBSTRING (au.first_page, 6, 1) + 
+SELECT SCHEMA_NAME(o.schema_id) + '.' + OBJECT_NAME(i.object_id) AS [object]
+     , p.partition_number AS [p#]
+     , fg.name AS [filegroup]
+     , p.rows
+     , au.total_pages AS pages
+     , CASE boundary_value_on_right
+       WHEN 1 THEN 'less than'
+       ELSE 'less than or equal to' END as comparison
+     , rv.value
+     , LAG(rv.value) OVER (ORDER BY p.partition_number) AS first_value
+     , rv.value AS last_value
+     , CONVERT (VARCHAR(6), CONVERT (INT, SUBSTRING (au.first_page, 6, 1) +
        SUBSTRING (au.first_page, 5, 1))) + ':' + CONVERT (VARCHAR(20), 
        CONVERT (INT, SUBSTRING (au.first_page, 4, 1) + 
        SUBSTRING (au.first_page, 3, 1) + SUBSTRING (au.first_page, 2, 1) + 
