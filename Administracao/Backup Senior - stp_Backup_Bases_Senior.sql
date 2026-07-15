@@ -9,7 +9,7 @@ GO
 -- PROCEDURE DE BACKUP - SRVSENIOR
 --
 -- Grava o .bak em disco LOCAL (C:\SQLServer\Backup\Full\<Base>\...).
--- O envio para o share Samba (\\192.168.8.150\backups\bkpstandalone\BackupsBD_ERPS\SRVSENIOR\Full)
+-- O envio para o share Samba 
 -- é feito por um passo separado do SQL Agent Job "DBA - Backup bases SENIOR",
 -- via robocopy, rodando sob o Proxy vinculado à credential [BKP].
 -- Ver: "Backup Senior - Proxy e Job Step Robocopy.sql" e "RobocopyBackup.cmd"

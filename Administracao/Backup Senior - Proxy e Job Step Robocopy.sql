@@ -2,9 +2,6 @@
 ================================================================================
  SRVSENIOR - Envio dos backups locais para o share Samba via robocopy
 
- Configura o passo que copia C:\SQLServer\Backup\Full\ para
- \\192.168.8.150\backups\bkpstandalone\BackupsBD_ERPS\SRVSENIOR\Full, rodando
- sob o Proxy do SQL Agent vinculado à credential [BKP] (já existente).
 
  PRÉ-REQUISITOS (fazer uma vez, fora do T-SQL, direto no SRVSENIOR):
    1) A credential [BKP] já existe (CREATE CREDENTIAL) com IDENTITY/SECRET do

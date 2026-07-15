@@ -15,7 +15,7 @@ REM  O CmdExec do SQL Agent trata qualquer saida != 0 como falha, entao o
 REM  errorlevel e traduzido abaixo.
 REM ==============================================================================
 
-robocopy "C:\SQLServer\Backup\Full" "\\192.168.8.150\backups\bkpstandalone\BackupsBD_ERPS\SRVSENIOR\Full" /MOV /E /R:3 /W:10 /NP /LOG:C:\SQLServer\Backup\Logs\robocopy_backup.log
+robocopy "C:\SQLServer\Backup\Full" "\\IP\backups\bkpstandalone\BackupsBD_ERPS\SRVSENIOR\Full" /MOV /E /R:3 /W:10 /NP /LOG:C:\SQLServer\Backup\Logs\robocopy_backup.log
 
 IF %ERRORLEVEL% GEQ 8 (
     EXIT /B 1
